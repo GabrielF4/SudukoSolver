@@ -18,22 +18,24 @@ function check_if_solved(sudoku) {
     return true;
 }
 
-function solve_sudoku(sudoku, debug = true) {
+function solve_sudoku(sudoku, debug = false) {
+    //TODO: Fix weird referencing
     let sudoku_temp = sudoku;
     let counter = 1;
     let solutions_found = true;
 
-    console.log("\nSudoku to solve:");
-    console.log(`${sudoku}`);
+    if (debug) {
+        console.log("\nSudoku to solve:");
+        console.log(`${sudoku}`);
+    }
 
     while (solutions_found) {
         //Debug status
-        if (debug) {
-            console.log(`Iteration: ${counter}...`);
-            if (counter > 100) {
-                console.error("ERROR! Too many iterations!");
-                break;
-            }
+        if (debug) console.log(`Iteration: ${counter}...`);
+        //Catching stuck loops
+        if (counter > 404) {
+            console.error("ERROR! Too many iterations!");
+            break;
         }
         solutions_found = false;
         //Loop through the whole sudoku
@@ -67,7 +69,7 @@ function solve_sudoku(sudoku, debug = true) {
                             );
                         }
                     }
-                    console.log(possible_solutions);
+                    //If only one posible number for a square then set that square to that number
                     if (possible_solutions.length === 1) {
                         if (debug) {
                             console.log(
@@ -77,6 +79,7 @@ function solve_sudoku(sudoku, debug = true) {
                         sudoku_temp[row][col] = possible_solutions[0];
                         solutions_found = true;
                     }
+                    //If an empty square has no possible solutions, something has gone wrong
                     if (possible_solutions.length == 0) {
                         console.error(
                             `ERROR: No valid solutions on (${row}, ${col})`
@@ -86,7 +89,7 @@ function solve_sudoku(sudoku, debug = true) {
                 }
             }
         }
-
+        //Exit program if whole sudoku iterated without any solutions found
         if (!solutions_found) {
             if (debug)
                 console.log("No more solutions found! Exiting software...");

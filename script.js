@@ -14,8 +14,6 @@ const solveButton = document.querySelector("#solve_btn");
 const loadButton = document.querySelector("#load_btn");
 const resetButton = document.querySelector("#reset_btn");
 
-console.log(predefinedSudoku);
-
 //Event Listeners for the buttons
 solveButton.addEventListener("click", solveButtonPressed);
 loadButton.addEventListener("click", () => drawBoard(predefinedSudoku));
@@ -25,7 +23,7 @@ resetButton.addEventListener("click", resetBoard);
 function solveButtonPressed() {
     console.log("Solving Sudoku!");
     sudoku = loadFromBoard();
-    sudoku = solve_sudoku(sudoku);
+    sudoku = solve_sudoku(sudoku, true);
     drawBoard(sudoku);
 
     /*
@@ -120,8 +118,8 @@ function drawBoard(sudoku) {
 
 //---------------------------------------------------------------------------
 
-//CALL THE PYTHON BACKEND TO SOLVE THE SUDOKU
-async function solveSudokuAPI(sudoku) {
+//CALL THE PYTHON BACKEND TO SOLVE THE SUDOKU (Used with earlier version)
+/*async function solveSudokuAPI(sudoku) {
     try {
         const response = await fetch("http://127.0.0.1:5000/solve-sudoku", {
             method: "POST",
@@ -140,6 +138,6 @@ async function solveSudokuAPI(sudoku) {
         console.error("Error processing matrix:", error);
         return null;
     }
-}
+}*/
 
 //---------------------------------------------------------------------------
