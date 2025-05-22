@@ -1,0 +1,121 @@
+body {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 600;
+}
+
+/*Sudoku section*/
+
+.sudoku-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 60px;
+    height: auto;
+}
+
+.sudoku {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: 20px;
+    border: 5px solid black;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    background-color: fdfdfd;
+}
+
+.subsection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border: 3px solid black;
+}
+
+.cell {
+    display: grid;
+    place-items: center;
+    height: 40px;
+    width: 40px;
+    border: 1px solid black;
+}
+
+.cell:hover {
+    background-color: #a9d3e8;
+}
+
+.activated-cell {
+    background-color: #ffaaaa;
+}
+
+.activated-cell:hover {
+    background-color: #ff3333;
+}
+
+/* Button section */
+
+#button-container {
+    margin-top: 20px;
+}
+
+.button {
+    font-family: inherit;
+    font-weight: 800;
+    font-size: large;
+    background-color: #29cddc;
+    color: white;
+    padding: 15px 50px;
+    border: #1b7880;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #aaaaaa;
+}
+
+#reset_btn {
+    background-color: #dc2929;
+    border: #8b1a1a;
+}
+
+#reset_btn:hover {
+    background-color: #8b1a1a;
+}
+
+.button:hover {
+    background-color: #1b7880;
+}
+
+.button:active {
+    background-color: #733d39;
+    color: white;
+}
+
+/* Info section */
+
+.info-container {
+    position: relative;
+    display: inline-block;
+    width: 30%;
+    cursor: pointer;
+}
+
+.info-box {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.info-icon:hover {
+    color: grey;
+}
+
+.info-container:hover .info-box {
+    visibility: visible;
+    opacity: 1;
+}

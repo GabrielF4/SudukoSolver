@@ -1,0 +1,5 @@
+.fixed-size {
+    width: 200px; /* Set the width */
+    height: 150px; /* Set the height */
+    border: 1px solid black; /* Optional: to highlight the boundaries */
+}
